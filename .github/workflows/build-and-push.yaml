@@ -1,0 +1,19 @@
+name: Build and Push to ACR
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-push:
+    uses: HammadTariq14/devops-template/.github/workflows/build-and-push.yaml@main
+    with:
+      image_name: hello-world-frontend
+      acr_name: ampliordevacr
+      environment: dev
+    secrets: inherit
